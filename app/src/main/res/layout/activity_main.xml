@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+    android:id="@+id/tvTitulo"
+    android:layout_width="222dp"
+    android:layout_height="40dp"
+    android:text="@string/tvTitulo"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/etDocumento"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:hint="Ingrese el Documento"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:padding="16dp"
+        android:hint="Ingrese el Usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDocumento" />
+
+    <EditText
+        android:id="@+id/etNombres"
+        android:layout_width="408dp"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:hint="Ingrese los Nombres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:hint="Ingrese los Apellidos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombres" />
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:hint="Ingrese la contraseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etApellidos" />
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="408dp"
+        android:layout_height="50dp"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etContrasena">
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRegister" />
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnBuscar" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="409dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="4dp"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow2">
+
+        <Button
+            android:id="@+id/btnListar"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnListar" />
+
+        <Button
+            android:id="@+id/btnBorrar"
+            android:layout_width="199dp"
+            android:layout_height="match_parent"
+
+
+            android:text="@string/btnBorrar" />
+    </TableRow>
+
+    <ListView
+        android:id="@+id/lvLista"
+        android:padding="8dp"
+        android:layout_width="409dp"
+        android:layout_height="318dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

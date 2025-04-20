@@ -1,5 +1,4 @@
 package co.edu.uniminuto.activity50.repository;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -49,7 +48,6 @@ public class UserRepository {
         } catch (SQLException e) {
             Log.i("Error en bases de datos", "insertUser: "+e.getMessage());
             e.printStackTrace();
-
         }
     }
     ///  para llenar la lista -- lista de usuarios
@@ -66,6 +64,7 @@ public class UserRepository {
                 user.setLastName(cursor.getString(2));
                 user.setUser(cursor.getString(3));
                 user.setPass(cursor.getString(4));
+                user.setStatus(cursor.getString(5));
                 users.add(user);
             } while (cursor.moveToNext());
         }
@@ -73,14 +72,14 @@ public class UserRepository {
             dataBaseSql.close();
             return users;
         }//fin
-
         /// Busqueda de el numero de documento
     public User getUserByDocument(int document) {
 
         SQLiteDatabase dataBaseSql = dataBase.getReadableDatabase();// Se lee la BD
         User user = null;
         //Consulta que busca al usuario en la db con el # documento
-        String query = "SELECT * FROM users WHERE use_document = ? AND use_status = 1";//se valida el status
+        //String query = "SELECT * FROM users WHERE use_document = ? AND use_status = 1";//se valida el status
+        String query = "SELECT * FROM users WHERE use_document = ?";
         Cursor cursor = null;
         try{
             //Ejecutar consulta con el numero de documento
@@ -93,7 +92,7 @@ public class UserRepository {
                 user.setLastName(cursor.getString(2));
                 user.setUser(cursor.getString(3));
                 user.setPass(cursor.getString(4));
-
+                user.setStatus(cursor.getString(5));
             }
         } catch (SQLException e) {//Si hay un error se muestra el log
             Log.i("Error en bases de datos", "getUserByDocument: "+e.getMessage());
@@ -123,10 +122,10 @@ public class UserRepository {
             }
         } catch (SQLException e) {
             Log.i("DB ERROR", "Error en bases de datos"+e.getMessage());
-            Snackbar.make(view, "Error al borrar", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view,
+                    "Error al borrar", Snackbar.LENGTH_LONG).show();
         }finally {
             db.close();
-
         }
         return actualizado;
     }//FIN BORRAR

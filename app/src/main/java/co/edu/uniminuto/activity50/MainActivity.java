@@ -1,5 +1,4 @@
 package co.edu.uniminuto.activity50;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,17 +7,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
-
 import co.edu.uniminuto.activity50.entities.User;
 import co.edu.uniminuto.activity50.repository.UserRepository;
 
@@ -30,14 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText etNombres;
     private EditText etApellidos;
     private EditText etContrasena;
-
     private ListView listView;
-
     private ListView listUsers;
     private SQLiteDatabase sqLiteDatabase;
-
     private Button btnGuardar;
-
     private Button btnBorrar;
     private Button btnListUsers;
     private int documento;
@@ -45,10 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private String apellidos;
     private String usuario;
     private String pass;
-
     /// /busqueda
     private Button btnBuscar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,17 +55,16 @@ public class MainActivity extends AppCompatActivity {
         btnBuscar.setOnClickListener(this::buscarUsuario); //buscar usuario
         btnBorrar.setOnClickListener(this::borrarUsuario); //borrar usuario
     }
-
     /// crear usuario
     private void createUser(View view) {
         capData();///captura datos
         User user = new User(documento, nombres, apellidos, usuario, pass);//crea objeto
+        user.setStatus("1");
         UserRepository userRepository = new UserRepository(context, view);
         userRepository.insertUser(user);//llama al metodo insertUser
         /// invocar el metodo para listar los usuarios
         listUsers(view);
     }
-
     //captura de datos
     private void capData(){
         //validaciones de los campos -- regex
@@ -91,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         int documento = Integer.parseInt(etDocumento.getText().toString());//buscar por documento
         UserRepository userRepository = new UserRepository(context, view);
         User userEncontrado = userRepository.getUserByDocument(documento);// busca en la bn
-
         if (userEncontrado != null) {
             /// los datos que se muestran en los campos - al encontrarlo
             this.etNombres.setText(userEncontrado.getName());
